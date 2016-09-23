@@ -13,7 +13,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+
 
 /**
  *
@@ -27,9 +32,76 @@ public class Util implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @ManyToOne
-    @JoinColumn(name = "util")
-     private List <Util> util = new ArrayList<>();
+   @OneToMany(mappedBy = "util")
+    private List<Page> page = new ArrayList<>(); // page
+   
+   @OneToMany(mappedBy = "util")
+   private List<Article> article = new ArrayList<>();//Articles
+   
+   @OneToMany(mappedBy = "util")
+   private List <Commentaire> commentaire = new ArrayList<>();
+   
+   @OneToMany(mappedBy = "util")
+    private List<Message> message = new ArrayList<>();
+    
+   @ManyToMany(mappedBy = "util1")
+   private List<Message> message1 = new ArrayList<>();
+   
+   
+   
+   @OneToOne(mappedBy = "util")
+   @JoinColumn(name = "NumSecu_ID")
+   private NumSecu numsecu;
+
+    public List<Page> getPage() {
+        return page;
+    }
+
+    public void setPage(List<Page> page) {
+        this.page = page;
+    }
+
+    public List<Article> getArticle() {
+        return article;
+    }
+
+    public void setArticle(List<Article> article) {
+        this.article = article;
+    }
+
+    public List<Commentaire> getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(List<Commentaire> commentaire) {
+        this.commentaire = commentaire;
+    }
+
+    public List<Message> getMessage() {
+        return message;
+    }
+
+    public void setMessage(List<Message> message) {
+        this.message = message;
+    }
+
+    public List<Message> getMessage1() {
+        return message1;
+    }
+
+    public void setMessage1(List<Message> message1) {
+        this.message1 = message1;
+    }
+
+    public NumSecu getNumsecu() {
+        return numsecu;
+    }
+
+    public void setNumsecu(NumSecu numsecu) {
+        this.numsecu = numsecu;
+    }
+ 
+    
 
     public Long getId() {
         return id;

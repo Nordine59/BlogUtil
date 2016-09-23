@@ -8,6 +8,7 @@ package Blogutil.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.lang.model.element.Name;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,15 +29,9 @@ public class Page implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    
     @ManyToOne
-    @JoinColumn(name = "Util_id")
+    @JoinColumn(name = "Util_ID")
     private Util util;
-   
-    @ManyToOne
-    @JoinColumn(name = "Commentaire-id")
-     private Commentaire commentaire; 
-    
   
     
     

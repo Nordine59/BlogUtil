@@ -6,10 +6,14 @@
 package Blogutil.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -23,17 +27,31 @@ public class Commentaire implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    
-    
+    @ManyToOne
+    @JoinColumn(name = "UTIL_ID")
+    private Util util;
     
 
     public Long getId() {
         return id;
     }
 
+    public Util getUtil() {
+        return util;
+    }
+
+    public void setUtil(Util util) {
+        this.util = util;
+    }
+
+
     public void setId(Long id) {
         this.id = id;
     }
+
+    
+
+    
 
     @Override
     public int hashCode() {

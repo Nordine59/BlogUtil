@@ -6,10 +6,16 @@
 package Blogutil.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,6 +28,20 @@ public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "UTIL_ID")// message de l'util
+    private Util util;
+    
+    
+    @ManyToMany
+    @JoinTable(name = "UTIL_Message")
+    private List <Util> util1 = new ArrayList<>();
+    
+    
+    
+    
 
     public Long getId() {
         return id;
